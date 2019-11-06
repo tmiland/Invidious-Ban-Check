@@ -58,7 +58,7 @@ config_path="/home/invidious/invidious/config"
 # Make sure that the script runs with root permissions
 chk_permissions () {
   if [[ "$EUID" != 0 ]]; then
-    echo -e "${RED}${ERROR} This action needs root permissions.${NC} Please enter your root password...";
+    echo -e " This action needs root permissions. Please enter your root password...";
     cd "$CURRDIR"
     su -s "$(which bash)" -c "./$SCRIPT_FILENAME"
     cd - > /dev/null
