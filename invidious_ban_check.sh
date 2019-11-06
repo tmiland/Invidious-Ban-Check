@@ -11,7 +11,7 @@ set -e
 ######################################################################
 
 
-version='1.0.0'
+version='1.0.1'
 #------------------------------------------------------------------------------#
 #
 # MIT License
@@ -106,7 +106,10 @@ fi
 main() {
 
   if [ "$1" == "check" ]; then
-    if curl -s -4 "$url" | grep "$keyword" &> /dev/null; then
+    if curl -s -4 "$url" | grep "$keyword" && curl -s -6 "$url" | grep "$keyword"; then
+      echo "Both IPv4 and IPv6 is banned on Google... Skipping"
+      exit
+    elif curl -s -4 "$url" | grep "$keyword" &> /dev/null; then
       # if the keyword is in the content
       echo " Google ban on IPv4"
       if [ "$2" == "force" ]; then
@@ -115,7 +118,7 @@ main() {
           echo " Changing force_resolve: to IPv6"
           cd ${config_path} || exit 1
           sudo -i -u invidious \
-          sed -i "s/force_resolve: ipv4/force_resolve: ipv6/g" ${config_path}/config.yml
+            sed -i "s/force_resolve: ipv4/force_resolve: ipv6/g" ${config_path}/config.yml
           systemctl restart invidious
           echo " Done"
         else
@@ -131,7 +134,7 @@ main() {
           echo " Changing force_resolve: to IPv4"
           cd ${config_path} || exit 1
           sudo -i -u invidious \
-          sed -i "s/force_resolve: ipv6/force_resolve: ipv4/g" ${config_path}/config.yml
+            sed -i "s/force_resolve: ipv6/force_resolve: ipv4/g" ${config_path}/config.yml
           systemctl restart invidious
           echo " Done"
         else
