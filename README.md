@@ -12,11 +12,16 @@ $ ./invidious_ban_check.sh [check] [force]
 
 ## Usage
 
-
 * Check: Just check if the IP is banned
 * Force: Change force_resolve in config.yml
 * E.G: If Google ban on IPv4, change to force_resolve: IPv6
 * Note: Invidious will be restarted
+
+## Cron job
+
+`$ crontab -e`
+
+`@hourly bash /path/to/script/invidious_ban_check.sh check force > /dev/null 2>&1`
 
 
 ***Note: you will be prompted to enter root password***
