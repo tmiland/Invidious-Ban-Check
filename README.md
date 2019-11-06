@@ -1,6 +1,6 @@
 # Invidious-Ban-Check
 
-[Invidious is an alternative front-end to YouTube](https://invidio.us)
+[Invidious is an alternative front-end to YouTube](https://github.com/omarroth/invidious)
 
 [Invidious-Updater (And Installer)](https://github.com/tmiland/Invidious-Updater)
 
