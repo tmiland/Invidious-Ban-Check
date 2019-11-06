@@ -14,6 +14,14 @@ $ chmod +x invidious_ban_check.sh
 $ ./invidious_ban_check.sh [check] [force]
 ```
 
+***Note: you will be prompted to enter root password***
+
+If root password is not set, type:
+
+```bash
+sudo passwd root
+```
+
 ## Usage
 
 * Check: Just check if the IP is banned
@@ -27,14 +35,6 @@ $ ./invidious_ban_check.sh [check] [force]
 
 `@hourly bash /path/to/script/invidious_ban_check.sh check force > /dev/null 2>&1`
 
-
-***Note: you will be prompted to enter root password***
-
-If root password is not set, type:
-
-```bash
-sudo passwd root
-```
 
 ## Donations 
 - [PayPal me](https://paypal.me/milanddata)
