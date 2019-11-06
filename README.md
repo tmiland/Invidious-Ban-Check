@@ -9,6 +9,16 @@ $ wget https://github.com/tmiland/Invidious-Ban-Check/raw/master/invidious_ban_c
 $ chmod +x invidious_ban_check.sh
 $ ./invidious_ban_check.sh [check] [force]
 ```
+
+## Usage
+
+
+* Check: Just check if the IP is banned
+* Force: Change force_resolve in config.yml
+* E.G: If Google ban on IPv4, change to force_resolve: IPv6
+* Note: Invidious will be restarted
+
+
 ***Note: you will be prompted to enter root password***
 
 If root password is not set, type:
