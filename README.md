@@ -1,5 +1,9 @@
 # Invidious-Ban-Check
 
+[Invidious is an alternative front-end to YouTube](https://invidio.us)
+
+[Invidious-Updater (And Installer)](https://github.com/tmiland/Invidious-Updater)
+
 ## Installation
 
 #### Download and execute the script:
