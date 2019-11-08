@@ -48,8 +48,19 @@ SCRIPT_DIR=$(dirname "${sfp}")
 # Command arguments
 check=`echo "$1"`
 force=`echo "$2"`
+# Set random video ID's
+array[0]="Z5H8xL-eMmU"
+array[1]="C-n3AMxdgsY"
+array[2]="ocHpxhgm92k"
+array[3]="CyOUa2lmyPM"
+array[4]="6CdfsCz1oKo"
+array[5]="mz7OHTFAPM4"
+
+size=${#array[@]}
+index=$(($RANDOM % $size))
+
 # URL to use
-url="https://www.youtube.com/watch?v=Z5H8xL-eMmU"
+url="https://www.youtube.com/watch?v=${array[$index]}"
 # Keyword to check for
 keyword="/das_captcha"
 # Path to Invidious config
@@ -109,7 +120,7 @@ main() {
     if curl -s -4 "$url" | grep "$keyword" && curl -s -6 "$url" | grep "$keyword"; then
       echo "Both IPv4 and IPv6 is banned on Google... Skipping"
       exit
-    elif curl -s -4 "$url" | grep "$keyword" &> /dev/null; then
+    elif curl -s -4 "$url" | grep "$keyword" > /dev/null 2>&1; then
       # if the keyword is in the content
       echo " Google ban on IPv4"
       if [ "$2" == "force" ]; then
@@ -125,7 +136,7 @@ main() {
           echo " Force resolve is already set to IPv6... Skipping"
         fi
       fi
-    elif curl -s -6 "$url" | grep "$keyword" &> /dev/null; then
+    elif curl -s -6 "$url" | grep "$keyword" > /dev/null 2>&1; then
       # if the keyword is in the content
       echo " Google ban on IPv6"
       if [ "$2" == "force" ]; then
