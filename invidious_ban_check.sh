@@ -125,7 +125,7 @@ main() {
       echo " Google ban on IPv4"
       if [ "$2" == "force" ]; then
         # Skip if already set to IPv6
-        if [[ ! $force_resolve_IPv6 -eq 0 ]]; then
+        if [[ ! $force_resolve_IPv6 -eq 1 ]]; then
           echo " Changing force_resolve: to IPv6"
           cd ${config_path} || exit 1
           sudo -i -u invidious \
@@ -141,7 +141,7 @@ main() {
       echo " Google ban on IPv6"
       if [ "$2" == "force" ]; then
         # Skip if already set to IPv4
-        if [[ ! $force_resolve_IPv6 -eq 0 ]]; then
+        if [[ ! $force_resolve_IPv6 -eq 1 ]]; then
           echo " Changing force_resolve: to IPv4"
           cd ${config_path} || exit 1
           sudo -i -u invidious \
