@@ -120,7 +120,7 @@ main() {
     if curl -s -4 "$url" | grep "$keyword" && curl -s -6 "$url" | grep "$keyword"; then
       echo "Both IPv4 and IPv6 is banned on Google... Skipping"
       exit
-    elif curl -s -4 "$url" | grep "$keyword" > /dev/null 2>&1; then
+    elif curl -Ls -4 "$url" | grep "$keyword" > /dev/null 2>&1; then
       # if the keyword is in the content
       echo " Google ban on IPv4"
       if [ "$2" == "force" ]; then
@@ -136,7 +136,7 @@ main() {
           echo " Force resolve is already set to IPv6... Skipping"
         fi
       fi
-    elif curl -s -6 "$url" | grep "$keyword" > /dev/null 2>&1; then
+    elif curl -Ls -6 "$url" | grep "$keyword" > /dev/null 2>&1; then
       # if the keyword is in the content
       echo " Google ban on IPv6"
       if [ "$2" == "force" ]; then
