@@ -62,7 +62,7 @@ index=$(($RANDOM % $size))
 # URL to use
 url="https://www.youtube.com/watch?v=${array[$index]}"
 # Keyword to check for
-keyword="/das_captcha"
+keyword="captcha"
 # Path to Invidious config
 config_path="/home/invidious/invidious/config"
 
