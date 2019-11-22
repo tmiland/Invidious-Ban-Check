@@ -126,7 +126,7 @@ main() {
       exit
     elif curl -Ls -4 "$url" | grep "$keyword" > /dev/null 2>&1; then
       # if the keyword is in the content
-      echo " Google ban on IPv4" | mail -s "Google ban on IPv4... On $(hostname)" $email
+      echo " Google ban on IPv4"
       if [ "$2" == "force" ]; then
         # Skip if already set to IPv6
         if [[ $force_resolve_IPv6 != 0 ]]; then
@@ -136,13 +136,15 @@ main() {
             sed -i "s/force_resolve: ipv4/force_resolve: ipv6/g" ${config_path}/config.yml
           systemctl restart invidious
           echo " Done"
+          # Send email notification
+          echo "Google ban on IPv4. force_resolve was set to IPv6 on $(hostname)" | mail -s "Google ban on $(hostname)" $email
         else
           echo " Force resolve is already set to IPv6... Skipping"
         fi
       fi
     elif curl -Ls -6 "$url" | grep "$keyword" > /dev/null 2>&1; then
       # if the keyword is in the content
-      echo " Google ban on IPv6" | mail -s "Google ban on IPv6... On $(hostname)" $email
+      echo " Google ban on IPv6"
       if [ "$2" == "force" ]; then
         # Skip if already set to IPv4
         if [[ $force_resolve_IPv4 != 0 ]]; then
@@ -152,6 +154,8 @@ main() {
             sed -i "s/force_resolve: ipv6/force_resolve: ipv4/g" ${config_path}/config.yml
           systemctl restart invidious
           echo " Done"
+          # Send email notification
+          echo "Google ban on IPv6.\n force_resolve was set to IPv4 on $(hostname)" | mail -s "Google ban on $(hostname)" $email
         else
           echo " Force resolve is already set to IPv4... Skipping"
         fi
