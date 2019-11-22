@@ -46,8 +46,8 @@ sfp=$(readlink -f "${BASH_SOURCE[0]}" 2>/dev/null || greadlink -f "${BASH_SOURCE
 if [ -z "$sfp" ]; then sfp=${BASH_SOURCE[0]}; fi
 SCRIPT_DIR=$(dirname "${sfp}")
 # Command arguments
-check=`echo "$1"`
-force=`echo "$2"`
+check=$(echo "$1")
+force=$(echo "$2")
 # Set random video ID's
 array[0]="Z5H8xL-eMmU"
 array[1]="C-n3AMxdgsY"
@@ -56,13 +56,15 @@ array[3]="CyOUa2lmyPM"
 array[4]="6CdfsCz1oKo"
 array[5]="mz7OHTFAPM4"
 
-size=${#array[@]}
-index=$(($RANDOM % $size))
+vid=${#array[@]}
+index=$(($RANDOM % $vid))
 
 # URL to use
-url="https://www.youtube.com/watch?v=${array[$index]}"
+# url="https://www.youtube.com/watch?v=${array[$index]}"
+url="https://www.youtube.com/watch?v=${array[$index]}&gl=US&hl=en&disable_polymer=1&has_verified=1&bpctr=9999999999"
 # Keyword to check for
-keyword="captcha"
+keyword="/das_captcha"
+#keyword="g-recaptcha"
 # Path to Invidious config
 config_path="/home/invidious/invidious/config"
 
