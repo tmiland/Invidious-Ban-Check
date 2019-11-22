@@ -68,6 +68,8 @@ keyword="/das_captcha"
 # Path to Invidious config
 config_path="/home/invidious/invidious/config"
 
+email=root
+
 # Make sure that the script runs with root permissions
 chk_permissions () {
   if [[ "$EUID" != 0 ]]; then
@@ -120,11 +122,11 @@ main() {
 
   if [ "$1" == "check" ]; then
     if curl -s -4 "$url" | grep "$keyword" && curl -s -6 "$url" | grep "$keyword"; then
-      echo "Both IPv4 and IPv6 is banned on Google... Skipping"
+      echo "Both IPv4 and IPv6 is banned on Google... Skipping" | mail -s "Both IPv4 and IPv6 is banned on Google... On $(hostname)" $email
       exit
     elif curl -Ls -4 "$url" | grep "$keyword" > /dev/null 2>&1; then
       # if the keyword is in the content
-      echo " Google ban on IPv4"
+      echo " Google ban on IPv4" | mail -s "Google ban on IPv4... On $(hostname)" $email
       if [ "$2" == "force" ]; then
         # Skip if already set to IPv6
         if [[ $force_resolve_IPv6 != 0 ]]; then
@@ -140,7 +142,7 @@ main() {
       fi
     elif curl -Ls -6 "$url" | grep "$keyword" > /dev/null 2>&1; then
       # if the keyword is in the content
-      echo " Google ban on IPv6"
+      echo " Google ban on IPv6" | mail -s "Google ban on IPv6... On $(hostname)" $email
       if [ "$2" == "force" ]; then
         # Skip if already set to IPv4
         if [[ $force_resolve_IPv4 != 0 ]]; then
