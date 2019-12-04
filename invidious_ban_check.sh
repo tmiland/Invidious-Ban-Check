@@ -63,7 +63,7 @@ index=$(($RANDOM % $vid))
 # url="https://www.youtube.com/watch?v=${array[$index]}"
 url="https://www.youtube.com/watch?v=${array[$index]}&gl=US&hl=en&disable_polymer=1&has_verified=1&bpctr=9999999999"
 # Keyword to check for
-keyword="/das_captcha"
+keyword="captcha"
 #keyword="g-recaptcha"
 # Path to Invidious config
 config_path="/home/invidious/invidious/config"
