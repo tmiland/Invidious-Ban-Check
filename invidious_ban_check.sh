@@ -11,7 +11,7 @@ set -e
 ######################################################################
 
 
-version='1.0.1'
+version='1.0.2'
 #------------------------------------------------------------------------------#
 #
 # MIT License
@@ -155,7 +155,7 @@ main() {
           systemctl restart invidious
           echo " Done"
           # Send email notification
-          echo "Google ban on IPv6.\n force_resolve was set to IPv4 on $(hostname)" | mail -s "Google ban on $(hostname)" $email
+          echo "Google ban on IPv6. force_resolve was set to IPv4 on $(hostname)" | mail -s "Google ban on $(hostname)" $email
         else
           echo " Force resolve is already set to IPv4... Skipping"
         fi
