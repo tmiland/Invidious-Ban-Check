@@ -61,7 +61,7 @@ index=$(($RANDOM % $vid))
 
 # URL to use
 # url="https://www.youtube.com/watch?v=${array[$index]}"
-url="https://www.youtube.com/watch?v=${array[$index]}&gl=US&hl=en&disable_polymer=1&has_verified=1&bpctr=9999999999"
+url="https://www.youtube.com/watch?v=${array[$index]}&gl=US&hl=en&has_verified=1&bpctr=9999999999"
 # Keyword to check for
 keyword="captcha"
 #keyword="g-recaptcha"
